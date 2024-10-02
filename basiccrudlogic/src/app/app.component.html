@@ -1,0 +1,98 @@
+<div class="container mt-5">
+  <div class="header text-center mb-4">
+    <h1>Manage Products</h1>
+    <hr />
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-area mb-4">
+        <h3>Create Product</h3>
+        <form #productsForm="ngForm" (ngSubmit)="onProductCreate(productsForm)">
+          <div class="mb-3">
+            <label for="Pname" class="form-label">Product Name</label>
+            <input type="text" name="Pname" ngModel class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="desc" class="form-label">Product Description</label>
+            <input type="text" name="desc" ngModel class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Product Price</label>
+            <input type="text" name="price" ngModel class="form-control" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!productsForm.valid">ADD PRODUCT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-display-area mt-5">
+    <h3>All Products</h3>
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.Pname }}</td>
+          <td>{{ product.desc }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="openEditModal(product)">
+              Edit
+            </button>
+            <button class="btn btn-danger" (click)="onProductDelete(product.id)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="products.length === 0">
+          <td colspan="5" class="text-center">No products found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+</div>
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="onProductEdit(currentProduct.id, editForm.value)">
+          <div class="mb-3">
+            <label for="Pname" class="form-label">Product Name</label>
+            <input type="text" name="Pname" [(ngModel)]="currentProduct.Pname" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="desc" class="form-label">Product Description</label>
+            <input type="text" name="desc" [(ngModel)]="currentProduct.desc" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Product Price</label>
+            <input type="text" name="price" [(ngModel)]="currentProduct.price" class="form-control" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid">Update Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

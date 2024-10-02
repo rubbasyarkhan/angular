@@ -1,0 +1,54 @@
+<!-- <p>userprofile-component works!</p>
+<h1>Name {{Name}} </h1>
+<h1>Designation {{Designation}} </h1>
+<h1>Salary {{Salary}} </h1>
+
+<input type="text" (input)="onchange($event) " >
+<br>
+<input type="text" [(ngModel)]="inputvalue" >
+
+
+<h1> {{inputvalue}} </h1>
+<button [disabled]="disbtn" >checkout</button>
+
+<div>
+  @for (user of users; track user.name) { @if(user.age>18){
+  <h5>
+    student name is {{ user.name }} || age of the student is {{ user.age }} ||
+    for compition -{{
+      user.eligiblitystatus ? "Eligible" : "better luck next time 😂"
+    }}
+  </h5> 
+  }@else {
+  <h5>
+    student name is {{ user.name }} || age of the student is minor ||
+    for compition -{{
+      user.eligiblitystatus ? "Eligible" : "better luck next time 😂"
+    }}
+  </h5>
+  } }
+</div>
+<hr>
+<div *ngFor="let user of users">
+
+    <h5 *ngIf="user.age >18 ; else elseblock" >
+        student name is {{ user.name }} || age of the student is {{ user.age }} ||
+        for compition -{{
+          user.eligiblitystatus ? "Eligible" : "better luck next time 😂"
+        }}
+      </h5> 
+      <ng-template #elseblock>
+        <h5>
+            student name is {{ user.name }} || age of the student is minor ||
+            for compition -{{
+              user.eligiblitystatus ? "Eligible" : "better luck next time 😂"
+            }}
+          </h5>
+      </ng-template>
+      
+</div> -->
+
+    <h1>user-{{name}} age {{age}} eligiblity {{eligiblitystatus?"Eligible":"better luck next time 😂"}} </h1>
+
+
+

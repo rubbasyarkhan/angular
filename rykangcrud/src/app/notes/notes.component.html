@@ -1,0 +1,53 @@
+<div class="container mt-3">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNoteModal">
+    ADD NEW <i class="bi bi-plus"></i>
+  </button>
+</div>
+
+<!-- Notes List -->
+<section class="p-5 container">
+  <div *ngFor="let note of notes" class="card mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ note.title }}</h5>
+      <p class="card-text">{{ note.description }}</p>
+      <div class="d-flex align-items-center">
+        <span class="mx-3" role="button" (click)="editExistingNote(note)" data-bs-toggle="modal" data-bs-target="#editNoteModal">
+          <i class="bi bi-pen"></i>
+        </span>
+        <span class="mx-3">
+          <button type="button" class="btn btn-danger" (click)="deleteNote(note.id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add Note Modal -->
+<div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addNoteLabel">New Note</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="title" class="col-form-label">TITLE</label>
+            <input type="text" class="form-control" [(ngModel)]="newNote.title" />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="col-form-label">DESCRIPTION</label>
+            <textarea class="form-control" [(ngModel)]="newNote.description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onNoteCreate()">Add Note</button>
+      </div>
+    </div>
+  </div>
+</div>

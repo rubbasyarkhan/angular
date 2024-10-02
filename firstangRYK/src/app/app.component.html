@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>apphtml</title>
+</head>
+<body>
+  <h1>app componenet</h1>
+  <app-userprofile-component 
+  *ngFor="let u of users"
+   [username] ="u.name"
+    [eligiblitystatus]="u.eligiblitystatus"
+     [age] = "u.age" ></app-userprofile-component>
+  <!-- <app-userprofile-component username ="rubbas" eligiblitystatus=true  age = "20"></app-userprofile-component>
+  <app-userprofile-component username ="hussain" eligiblitystatus=false  age = "10"></app-userprofile-component>
+  <app-userprofile-component username ="ali" eligiblitystatus=true  age = "18"></app-userprofile-component>
+  <app-userprofile-component username ="subhan" eligiblitystatus=false  age = "19"></app-userprofile-component>
+   -->
+</body>
+</html>
